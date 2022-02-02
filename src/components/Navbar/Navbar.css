@@ -1,0 +1,14 @@
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    background-color: antiquewhite;
+}
+.botones{
+    align-self: center;
+}
+.boton{
+    background-color: blueviolet;
+    color: black;
+    
+}
