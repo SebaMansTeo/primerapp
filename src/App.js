@@ -8,6 +8,7 @@ function App() {
       <Navbar title="LA TIENDA" color="black" />
       <FunctionCounter />
     </div>
+    
   );
 }
 
