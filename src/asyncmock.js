@@ -1,13 +1,22 @@
 const products = [
     { id: 1, name: 'Silla Nórdica', price: 'usd 1000', category: 'lifestyle', img: "https://www.kionadecoracion.com/222892-large_default/silla-de-comedor-de-diseno-nordico-eva.jpg", stock: 25, description:'silla nordica'},
-    { id: 2, name: 'samsung s21', price: 'usd 800', category: 'celular', img:'https://cdn.pocket-lint.com/r/s/1200x630/assets/images/155378-phones-review-hands-on-samsung-galaxy-s21-ultra-image1-luae09ici4.JPG', stock: 16, description:'Descripcion de Samsung s21'},
-    { id: 3, name: 'Ipad 8va generacion', price: 'usd 1200', category: 'tablet', img:'https://medias.musimundo.com/medias/00406046-143516-143516-01-143516-01.jpg-size515?context=bWFzdGVyfGltYWdlc3w1MjI1MnxpbWFnZS9qcGVnfGhjMC9oYWMvMTAyODM0OTc0NTU2NDYvMDA0MDYwNDYtMTQzNTE2LTE0MzUxNl8wMS0xNDM1MTZfMDEuanBnX3NpemU1MTV8MzA0NmMzNGFhZjUwMDY2YjY5MjU0MjlkMGJlYWMxODAxZjE5ODJhZmJlOTczZThmZjE2NTQxMjU5NjE2OTA4Yw', stock: 10, description:'Descripcion de Ipad'}
+    { id: 2, name: 'Responsive Design', price: 'usd 800', category: 'book', img:'https://assets.awwwards.com/awards/images/2012/08/responsive-web-design-books-transparency%20(2).png', stock: 16, description:'Descripcion de Samsung s21'},
+    { id: 3, name: 'HTML5 CSS3', price: 'usd 1200', category: 'book', img:'https://assets.awwwards.com/awards/images/2012/08/responsive-web-design-books-transparency%20(1).png', stock: 10, description:'Descripcion de Ipad'},
+    { id: 4, name: 'Design Book', price: 'usd 800', category: 'book', img:'https://kbimages1-a.akamaihd.net/8f30a2c0-0834-4a3d-94a5-770e11050425/353/569/90/False/the-non-designer-s-design-book-3.jpg', stock: 16, description:'Descripcion de Samsung s21'}
 ]
 
 export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(products)
+        }, 3000)
+    })
+}
+
+export const getProduct = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(products[2])
         }, 3000)
     })
 }
