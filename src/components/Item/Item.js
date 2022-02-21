@@ -1,20 +1,20 @@
+import { Link } from "react-router-dom"
+import "./Item.css"
+
 
 const Item = ({product})=>{
-
+    
     
 
     return(
-        <div>
-            <div>
-                <h1>{product.name}</h1>
-                <img src={product.img} alt="foto"/>
-                <p>{product.price}</p>
+        <div className="card" style={{backgroundColor: "beige" ,width: "15rem", margin: "1rem", padding: "2rem"}}>
+            <img style={{width: "10rem", height: "10rem", alignSelf: "center"}} src={product.img} className="card-img-top" alt="foto"/>
+            <div className="card-body" style={{textAlign: "center"}}>
+                <h3 className="card-title" style={{textAlign: "start"}}>{product.name}</h3>
+                <p className="card-text" style={{textAlign: "start"}}>{product.price}</p>
+                <p className="card-text">Stock disponible: {product.stock}</p>
+                <Link className="itemBtn" to={`/detail/${product.id}`} >INFO PRODUCTO</Link>
             </div>
-            <div className="productDetails">
-                <button>Ver detalle de producto</button>
-                <p>Stock disponible: {product.stock}</p>
-            </div>
-            
         </div>
     )
 }

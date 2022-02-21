@@ -1,7 +1,8 @@
-const Button = ({ backgroundColor = "blueviolet", colorText = "black", handleClick, children, ...rest }) =>{
+const Button = ({ backgroundColor = "blueviolet", colorText = "white", handleClick, children, ...rest }) =>{
 
     return(
-        <button style={{backgroundColor, color: colorText}} onClick={handleClick}>{children}</button>
+        <a type="button" class="nav-link" style={{ color: colorText}} onClick={handleClick}>{children}</a>
+        
     )
 }
 
