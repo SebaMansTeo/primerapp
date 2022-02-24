@@ -3,12 +3,12 @@ import Button from "../Button/button";
 import CartWidget from "../CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
 
-const Navbar = ({title, ...rest}) => {  
+const Navbar = ({title, color}) => {  
     
         
     return (
         
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mainNav">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">{title}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

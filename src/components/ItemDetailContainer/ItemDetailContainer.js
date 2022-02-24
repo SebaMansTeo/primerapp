@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
 
     return (
         <div className="ItemDetailContainer" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-            <ItemDetail  product={product}/>
+            <ItemDetail  {...product}/>
         </div>
     )    
 }
