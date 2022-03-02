@@ -1,13 +1,30 @@
 import ItemCount from "../ItemCount/ItemCount"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
+import CartContext from "../../context/CartContext"
 
 const ItemDetail = ({ name, img, description, id, price, stock, category }) => {
     const [quantity, setQuantity] = useState(0)
 
+    const { addItem, removeItem, clear} = useContext(CartContext)
+ 
     const handleOnAdd = (quantity) =>{
         setQuantity(quantity)
+        const productToAdd = {
+            name,
+            img,
+            description,
+            id,
+            price,
+            stock,
+            category,
+            quantity
+        }
+        addItem(productToAdd, quantity)
+        
     }
+    
+      
     
     return (
         <div class="card" style={{width: "18rem", textAlign: "center"}}>
@@ -21,8 +38,9 @@ const ItemDetail = ({ name, img, description, id, price, stock, category }) => {
                     {quantity > 0 ? <Link to={"/cart"}>IR AL CARRO DE COMPRAS</Link>:
                     <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>}
                 </footer>
-                <a href="#" class="btn btn-primary">AGREGAR AL CARRITO</a>
-            </div>
+                <button className="btn btn-primary" onClick={removeItem}>REMOVE</button>
+                <button className="btn btn-primary" onClick={clear}>VACIAR CARRITO</button>
+            </div> 
         </div>
         
     )
