@@ -2,9 +2,12 @@ import "./Navbar.css"
 import Button from "../Button/button";
 import CartWidget from "../CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import CartContext from "../../context/CartContext"
 
 const Navbar = ({title, color}) => {  
     
+    const {cart} = useContext(CartContext)
         
     return (
         
@@ -23,7 +26,7 @@ const Navbar = ({title, color}) => {
                     </div>
                 </div>
             </div>
-            <CartWidget/>
+            {cart.length > 0 && <CartWidget/>}
         </nav>
     )
 }

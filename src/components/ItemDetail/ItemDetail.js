@@ -6,7 +6,7 @@ import CartContext from "../../context/CartContext"
 const ItemDetail = ({ name, img, description, id, price, stock, category }) => {
     const [quantity, setQuantity] = useState(0)
 
-    const { addItem, removeItem, clear} = useContext(CartContext)
+    const { addItem} = useContext(CartContext)
  
     const handleOnAdd = (quantity) =>{
         setQuantity(quantity)
@@ -33,13 +33,11 @@ const ItemDetail = ({ name, img, description, id, price, stock, category }) => {
                 <h5 class="card-title">{name}</h5>
                 <p class="card-text" style={{textTransform: "uppercase"}}>{category}</p>
                 <p class="card-text">{description}</p>
-                <p class="card-text">{price}</p>
+                <p class="card-text">$ {price}</p>
                 <footer>
                     {quantity > 0 ? <Link to={"/cart"}>IR AL CARRO DE COMPRAS</Link>:
                     <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>}
                 </footer>
-                <button className="btn btn-primary" onClick={removeItem}>REMOVE</button>
-                <button className="btn btn-primary" onClick={clear}>VACIAR CARRITO</button>
             </div> 
         </div>
         
