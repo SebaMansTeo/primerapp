@@ -13,7 +13,7 @@ const Item = ({product})=>{
                 <h3 className="card-title" style={{textAlign: "start"}}>{product.name}</h3>
                 <p className="card-text" style={{textAlign: "start"}}>$ {product.price}</p>
                 <p className="card-text">Stock disponible: {product.stock}</p>
-                <Link className="itemBtn" to={`/detail/${product.id}`} >INFO PRODUCTO</Link>
+                <Link className="itemBtn btn-outline-secondary" to={`/detail/${product.id}`} >INFO PRODUCTO</Link>
             </div>
         </div>
     )

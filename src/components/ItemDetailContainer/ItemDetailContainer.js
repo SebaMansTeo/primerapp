@@ -1,34 +1,34 @@
 import { useState, useEffect } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
-import { getDoc, doc } from 'firebase/firestore'
-import { firestoreDb } from '../../services/firebase/firebase'
+import { useNotificationServices } from '../../services/notifications/NotificationServices'
+import { getProductById } from '../../services/firebase/firebase'
 
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState()
     const {productId} = useParams()
     const [loading, setLoading] = useState(true)
+    const setNotification = useNotificationServices()
     
     
     useEffect(() => {
         
         setLoading(true)
 
-        const docRef = doc(firestoreDb, "Productos", productId)
-        getDoc(docRef).then(response =>{
-            const product = {id: response.id, ...response.data()}
-            setProduct(product)
-        }).finally(()=> {
+        getProductById(productId).then(response => {
+            setProduct(response)
+        }).catch((error) => {
+            setNotification('error',`Error buscando producto: ${error}`)
+        }).finally(() => {
             setLoading(false)
-        }
-        )
+        })
 
         return (() => {
             setProduct()
         })
 
-    }, [productId])
+    }, [productId]) // eslint-disable-line
 
 
     return (
@@ -44,4 +44,24 @@ const ItemDetailContainer = () => {
         
     )    
 }
+
+//         const docRef = doc(firestoreDb, "Productos", productId)
+//         getDoc(docRef).then(response =>{
+//             const product = {id: response.id, ...response.data()}
+//             setProduct(product)}).catch((error) => {
+//                 setNotification('error',`Error buscando producto: ${error}`)
+//         }).finally(()=> {
+//             setLoading(false)
+//         }
+//         )
+
+//         return (() => {
+//             setProduct()
+//         })
+
+//     }, [productId])
+
+
+        
+// }
 export default ItemDetailContainer

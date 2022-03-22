@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import "./ItemCount.css"
+
 
 const ItemCount = ({stock = 1, initial = 1, onAdd})=> {
    const [quantity, setQuantity] = useState(initial)
@@ -20,12 +22,12 @@ const ItemCount = ({stock = 1, initial = 1, onAdd})=> {
            <table >
                <tbody>
                    <tr>
-                       <td align="left"><button className="Option" onClick={()=> decrement() }>-</button></td>
+                       <td align="left"><button className="btn btn-secondary" onClick={()=> decrement() }>-</button></td>
                        <td align="center" style={{fontSize : '20px'}}>{quantity}</td>
-                       <td align="right"><button className="Option" onClick={() => increment() }>+</button></td>
+                       <td align="right"><button className="btn btn-secondary" onClick={() => increment() }>+</button></td>
                    </tr>
                    <tr>
-                       <td align="center" colSpan="5"><button className="Option" onClick={() => onAdd(quantity)}>Agregar al carrito</button></td>
+                       <td align="center" colSpan="5"><button className="itemBtn btn-outline-secondary" onClick={() => onAdd(quantity)}>AGREGAR AL CARRITO</button></td>
                    </tr>
 
                </tbody>

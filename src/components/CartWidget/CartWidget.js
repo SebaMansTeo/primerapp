@@ -1,16 +1,15 @@
 import { useContext } from "react"
 import CartContext from "../../context/CartContext"
 import { Link } from "react-router-dom"
+import {BsFillCartFill} from 'react-icons/bs';
 
 const CartWidget = () => {
     const { getQuantity } = useContext(CartContext)
 
     return(
-        <button>
-            <Link to={"/cart"} > <img src="/IMAGES/cart.svg" alt="cart" style={{width: 15}}/>
+        <button className="btn btn-outline-light" >
+            <Link style={{textDecoration:"none", display:"inline-flex", color:"white"}}  to={"/cart"} > <BsFillCartFill /> 
             {getQuantity()}</Link>
-            {/* <img src="/IMAGES/cart.svg" alt="cart" style={{width: 15}}/>
-            {getQuantity()} */}
         </button>
     )
 }
