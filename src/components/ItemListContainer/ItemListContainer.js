@@ -45,32 +45,6 @@ const ItemListContainer = ()=> {
     
 }
 
-//         const collectionRef = categoryId ?
-//             query(collection(firestoreDb, 'Productos'), where('category', '==', categoryId)) :
-//             collection(firestoreDb, 'Productos')
 
-//         getDocs(collectionRef).then(response => {
-//             const products = response.docs.map(doc => {
-//                 return { id: doc.id, ...doc.data() }
-//             })
-
-//             setProducts(products)
-//         }).catch((error) => {
-//             setNotification('error', error)    
-//         }).finally(() => {
-//             setLoading(false)
-//         })
-
-
-//         return (() => {
-//             setProducts()
-//         })          
-//     }, [categoryId])
-    
-    
-    
-        
-    
-// }
 
 export default ItemListContainer

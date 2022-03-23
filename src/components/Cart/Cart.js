@@ -6,6 +6,7 @@ import { useNotificationServices } from "../../services/notifications/Notificati
 import CartContext from "../../context/CartContext"
 import { addDoc, collection, query, where, writeBatch, Timestamp, getDocs, documentId } from "firebase/firestore"
 import { firestoreDb } from "../../services/firebase/firebase"
+import { NavLink } from "react-router-dom"
 
 
 
@@ -79,43 +80,65 @@ if(processingOrder) {
 
 if(cart.length === 0) {
     return (
-        <div>
-            <h1>Cart</h1>
-            <h2>No hay productos en el carrito</h2>
+        <div style={{textAlign: "center"}}>
+            <h1 style={{textAlign: "center"}}>TU CARRO DE COMPRAS</h1>
+            <h2 style={{textAlign: "center"}}>NO AGREGASTE PRODUCTOS AL CARRITO</h2>
+            <NavLink to={"/"}><button>VER PRODUCTOS</button></NavLink>
         </div>
     )
 }
 
 return ( 
     <div>
-        <h1>Cart</h1>
-        { cart.map(p => <CartItem key={p.id} {...p}/>) }
-        <h3>Total: ${getTotal()}</h3>
-        <button onClick={() => clear()} className="Button">Cancelar compra</button>
-        <button onClick={() => confirmOrder()} className="Button">Confirmar Compra</button>
+        <h1 style={{textAlign: "center"}}>TU CARRO DE COMPRAS</h1>
+        <div class="container-fluid">
+            <div className="row" style={{textAlign: "center"}}>
+                <div class="col tituloMod">PRODUCTO</div>
+                <div class="col tituloMod">CANTIDAD</div>
+                <div class="col tituloMod">PRECIO</div>
+                <div class="col tituloMod">SUBTOTAL</div>
+                <div class="col tituloMod"></div>
+                <div class="col tituloMod">ELIMINAR</div>
+            </div>
+            { cart.map(p => <CartItem key={p.id} {...p}/>) }
+        <h3 className="col" style={{textAlign: "right"}}>TOTAL COMPRA: ${getTotal()}</h3>
+        <Togglable buttonLabelShow={
+                    (contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') 
+                        ? 'EDITAR CONTACTO' 
+                        : 'COMPLETAR FORMULARIO DE COMPRA'
+                    } 
+                    ref={contactFormRef}>
+            <ContactForm toggleVisibility={contactFormRef} setContact={setContact} />
+        </Togglable>
+        <div className="row">
+        <button onClick={() => clear()} className="Button col">VACIAR CARRITO</button>
+        <button onClick={() => confirmOrder()} className="Button col">CONFIRMAR COMPRA</button>
         {
             (contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') &&
             
                 <div>
-                    <h4>Nombre: {contact.name}</h4>
-                    <h4>Telefono: {contact.phone}</h4>
-                    <h4>Direccion: {contact.address}</h4>
-                    <h4>Comentario: {contact.comment}</h4>
+                    <h2 style={{textAlign:"center"}}>DATOS DEL COMPRADOR</h2>
+                    <div className="row">
+                    <h4 className="col">Nombre: {contact.name}</h4>
+                    <h4 className="col" style={{textAlign:"right"}}>Telefono: {contact.phone}</h4>
+                    </div>
+                    <div className="row">
+                    <h4 className="col">Direccion: {contact.address}</h4>
+                    <h4 className="col" style={{textAlign:"right"}}>Comentario: {contact.comment}</h4>
+                    </div>
                     <button onClick={() => setContact({ phone: '', address: '', comment: ''})} 
                             className='Button' 
                             style={{backgroundColor: '#db4025'}}>
-                        Borrar datos de contacto
+                        BORRAR DATOS DE CONTACTO
                     </button>
+                    
                 </div>    
         }
-        <Togglable buttonLabelShow={
-                    (contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') 
-                        ? 'Editar contacto' 
-                        : 'Agregar contacto'
-                    } 
-                    ref={contactFormRef}>
-            <ContactForm toggleVisibility={contactFormRef} setContact={setContact} />
-        </Togglable>          
+        
+        </div>
+        </div>
+        
+                  
     </div>
 )
 }

@@ -45,23 +45,5 @@ const ItemDetailContainer = () => {
     )    
 }
 
-//         const docRef = doc(firestoreDb, "Productos", productId)
-//         getDoc(docRef).then(response =>{
-//             const product = {id: response.id, ...response.data()}
-//             setProduct(product)}).catch((error) => {
-//                 setNotification('error',`Error buscando producto: ${error}`)
-//         }).finally(()=> {
-//             setLoading(false)
-//         }
-//         )
 
-//         return (() => {
-//             setProduct()
-//         })
-
-//     }, [productId])
-
-
-        
-// }
 export default ItemDetailContainer

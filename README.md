@@ -68,3 +68,49 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+## Configurar variables de entorno
+
+```sh
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
+```
+
+# Rutas de navegación de la app
+
+- path='/' (Vista principal renderiza todos los productos desordenados)
+- path='/category/:categoryId' (usa el parámetro de category para filtar y renderizar los productos por categoria)
+- path='/detail/:productId' (usa el parámetro del productId para renderizar el producto seleccionado)
+- path='/cart' (En caso de haber productos en el carrito renderiza el cart mostrando los productos agregados)
+
+# Formato del producto a cargar en la base de datos de Firebase
+- name
+- price
+- category
+- img
+- stock
+- description
+
+# La orden de compra retornará los siguientes campos
+- buyer: 
+    - name
+    - address
+    - phone
+    - comment
+- date
+- itmes:
+    - id
+    - category
+    - description
+    - img
+    - name
+    - price
+    - quantity
+    - stock
+- total

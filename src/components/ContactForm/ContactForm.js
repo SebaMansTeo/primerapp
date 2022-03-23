@@ -25,17 +25,23 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
     }
 
     return (
-        <div className='ContactContainer'>
-          <div>Contacto</div>
-          <form className='ContactForm' onSubmit={handleContactForm}>
+        <div className='container-fluid'>
+          <div className='row'>
+          <div className='col' style={{textAlign: "center"}}>FORMULARIO DE COMPRA</div>
+          </div>
+          <form onSubmit={handleContactForm}>
+          <div className="row">
+            <div className="col">
             <label className='LabelContact'>Nombre:
               <input
-                className='InputContact'
+                className=''
                 type='text'
                 value={name}
                 onChange={({ target }) => setName(target.value)}
               />
-            </label>  
+            </label>
+            </div>
+            <div class="col">
             <label className='LabelContact'>Telefono:
               <input
                 className='InputContact'
@@ -44,6 +50,8 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
                 onChange={({ target }) => setPhone(target.value)}
               />
             </label>
+            </div>
+            <div class="col">
             <label className='LabelContact'>Direccion:
               <input
                 className='InputContact'
@@ -52,6 +60,8 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
                 onChange={({ target }) => setAddress(target.value)}
               />
             </label>
+            </div>
+            <div className='col'>
             <label className='LabelContact'>Comentario: 
               <input
                 className='InputContact'
@@ -60,8 +70,13 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
                 onChange={({ target }) => setComment(target.value)}
               />
             </label>
-            <button className='Button' type='submit'>Confirmar</button>
+            <button className='Button' type='submit'>CARGAR DATOS</button>
+            </div>
+          </div>
           </form>
+
+
+          
         </div>
       )
 }
