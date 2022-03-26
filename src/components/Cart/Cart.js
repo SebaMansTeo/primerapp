@@ -52,14 +52,21 @@ const confirmOrder = () => {
                 })
             }).then(() => {
                 if(outOfStock.length === 0) {
+                    
+                    
                     addDoc(collection(firestoreDb, 'orders'), objOrder).then(({id}) => { 
                         batch.commit()
                         clear()
+                        
                         alert(
                                     `La orden se genero exitosamente, su numero de orden es: ${id}`
                               )
                         setNotification('success', `La orden se genero exitosamente, su numero de orden es: ${id}`)
+                        
+                        
                     })
+
+                    
                 } else {
                     outOfStock.forEach(prod => {
                         setNotification('error', `El producto ${prod.name} no tiene stock disponible`)
