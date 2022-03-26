@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom"
 import "./Item.css"
 
-
 const Item = ({product})=>{
-    
-    
-
     return(
         <div className="card" style={{backgroundColor: "beige" ,width: "15rem", margin: "1rem", padding: "2rem"}}>
             <img style={{borderRadius: "15px", width: "10rem", height: "10rem", alignSelf: "center"}} src={product.img} className="card-img-top" alt="foto"/>

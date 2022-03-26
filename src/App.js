@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar/Navbar';
+import Footer from "./components/Footer/Footer";
 import './App.css';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
@@ -21,6 +22,7 @@ function App() {
               <Route path='/detail/:productId' element={<ItemDetailContainer />}/>
               <Route path='/cart' element={<Cart />}/>
             </Routes>
+            <Footer/>
           </BrowserRouter>
         </CartContextProvider>
       </NotificationServicesProvider>

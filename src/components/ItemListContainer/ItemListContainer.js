@@ -1,5 +1,3 @@
-
-import "./ItemListContainer.css"
 import ItemList from "../ItemList/ItemList"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
@@ -34,7 +32,12 @@ const ItemListContainer = ()=> {
         <div className="ItemListContainer container p-3">
             {
                 loading ? 
-                    <h1>Cargando...</h1> :  
+                <div style={{marginTop: "10rem"}} class="d-flex justify-content-center">
+  <div style={{width: "3rem", height: "3rem"}} class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+                    :  
                 products.length ? 
                     <ItemList products={products}/> : 
                     <h1>No se encontraron productos!</h1>

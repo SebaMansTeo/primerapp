@@ -4,20 +4,16 @@ const FunctionCounter = () => {
     const [count, setCount] = useState(0);
 
     useEffect(()=> {
-    console.log("se monto")
     setCount(count + 1)
 
     return()=>{
-        console.log("me voy a desmontar")
         setCount(0)
     }
     }, [])
 
     useEffect(()=>{
-        console.log("count cambio")
-
         return()=>{
-            console.log("return conut")
+            
             if(count === 10){
                 setCount(0)
             }

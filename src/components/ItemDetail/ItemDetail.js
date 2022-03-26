@@ -27,23 +27,27 @@ const ItemDetail = ({ name, img, description, id, price, stock, category }) => {
         setNotification('success',`Se agrego ${name} al carrito`)
         
     }
-    
-      
-    
+        
     return (
-        <div class="card" style={{width: "18rem", textAlign: "center"}}>
-            <img src={img} alt={name} class="card-img-top"/>
+      <div class="card " style={{maxWidth: "1000px", marginTop:"4rem"}}>
+        <div class="row">
+          <div class="col-md-4" >
+            <img style={{border: "1px solid black"}} src={img} alt={name} class="img-fluid rounded-start"/>
+          </div>
+          <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">{name}</h5>
-                <p class="card-text" style={{textTransform: "uppercase"}}>{category}</p>
-                <p class="card-text">{description}</p>
-                <p class="card-text">$ {price}</p>
-                <footer>
-                    {quantity > 0 ? <Link to={"/cart"} className="btn btn-secondary">IR AL CARRO DE COMPRAS</Link>:
-                    <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>}
-                </footer>
-            </div> 
+              <h5 class="card-title">{name}</h5>
+              <p class="card-text" style={{textTransform: "uppercase"}}>{category}</p>
+              <p class="card-text">{description}</p>
+              <p class="card-text">$ {price}</p>
+              <footer>
+                     {quantity > 0 ? <Link to={"/cart"} className="btn btn-secondary">IR AL CARRO DE COMPRAS</Link>:
+                     <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>}
+              </footer>
+            </div>
+          </div>
         </div>
+      </div>
         
     )
 }

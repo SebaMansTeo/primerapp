@@ -2,9 +2,6 @@
 import Item from "../Item/Item";
 
 const ItemList = ({products})=>{
-
-    
-    
     return(
         <div>
             <div className="row">
@@ -14,7 +11,6 @@ const ItemList = ({products})=>{
                 )}
             </div>
             </div>
-            
         </div>
     )
 }

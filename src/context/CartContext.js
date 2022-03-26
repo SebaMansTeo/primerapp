@@ -5,8 +5,7 @@ const Context = createContext()
 export const CartContextProvider = ({children}) => {
 
     const [cart, setCart] = useState([])
-    console.log(cart)
-
+    
     const addItem = (productToAdd, quantity) =>{
         const newObj = {
             ...productToAdd,
@@ -19,12 +18,11 @@ export const CartContextProvider = ({children}) => {
                 }
                 return p;
             })
-            console.log("ya existe")
             setCart(newCart)
             
         }else{
             setCart([...cart, newObj])
-            console.log(cart)
+            
         }
     }
 

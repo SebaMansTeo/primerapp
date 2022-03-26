@@ -55,6 +55,9 @@ const confirmOrder = () => {
                     addDoc(collection(firestoreDb, 'orders'), objOrder).then(({id}) => { 
                         batch.commit()
                         clear()
+                        alert(
+                                    `La orden se genero exitosamente, su numero de orden es: ${id}`
+                              )
                         setNotification('success', `La orden se genero exitosamente, su numero de orden es: ${id}`)
                     })
                 } else {
@@ -89,10 +92,10 @@ if(cart.length === 0) {
 }
 
 return ( 
-    <div>
+    <div className="modal-centered" >
         <h1 style={{textAlign: "center"}}>TU CARRO DE COMPRAS</h1>
-        <div class="container-fluid">
-            <div className="row" style={{textAlign: "center"}}>
+        <div class="container-fluid" style={{padding: "10rem"}}>
+            <div className="row" style={{textAlign: "center", marginBottom: "1rem", borderBottom: "1px solid grey"}}>
                 <div class="col tituloMod">PRODUCTO</div>
                 <div class="col tituloMod">CANTIDAD</div>
                 <div class="col tituloMod">PRECIO</div>
@@ -102,21 +105,15 @@ return (
             </div>
             { cart.map(p => <CartItem key={p.id} {...p}/>) }
         <h3 className="col" style={{textAlign: "right"}}>TOTAL COMPRA: ${getTotal()}</h3>
-        <Togglable buttonLabelShow={
-                    (contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') 
-                        ? 'EDITAR CONTACTO' 
-                        : 'COMPLETAR FORMULARIO DE COMPRA'
-                    } 
-                    ref={contactFormRef}>
-            <ContactForm toggleVisibility={contactFormRef} setContact={setContact} />
-        </Togglable>
+        
         <div className="row">
-        <button onClick={() => clear()} className="Button col">VACIAR CARRITO</button>
-        <button onClick={() => confirmOrder()} className="Button col">CONFIRMAR COMPRA</button>
+            <div className="col"><button onClick={() => clear()} className="btn btn-danger">VACIAR CARRITO</button></div>
+            <div style={{textAlign: "right"}} className="col"><button onClick={() => confirmOrder()} className="btn btn-success">CONFIRMAR COMPRA</button></div>
+        
         {
             (contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') &&
             
-                <div>
+                <div style={{marginTop: "3rem"}}>
                     <h2 style={{textAlign:"center"}}>DATOS DEL COMPRADOR</h2>
                     <div className="row">
                     <h4 className="col">Nombre: {contact.name}</h4>
@@ -126,19 +123,26 @@ return (
                     <h4 className="col">Direccion: {contact.address}</h4>
                     <h4 className="col" style={{textAlign:"right"}}>Comentario: {contact.comment}</h4>
                     </div>
-                    <button onClick={() => setContact({ phone: '', address: '', comment: ''})} 
-                            className='Button' 
-                            style={{backgroundColor: '#db4025'}}>
+                    <div style={{textAlign: "right"}}>
+                    <button  onClick={() => setContact({ phone: '', address: '', comment: ''})} 
+                            className='btn btn-danger btn-sm' 
+                            >
                         BORRAR DATOS DE CONTACTO
                     </button>
+                    </div>
                     
                 </div>    
         }
-        
+        <Togglable buttonLabelShow={
+                    (contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') 
+                        ? 'EDITAR CONTACTO' 
+                        : 'COMPLETAR FORMULARIO DE COMPRA'
+                    } 
+                    ref={contactFormRef}>
+            <ContactForm toggleVisibility={contactFormRef} setContact={setContact} />
+        </Togglable>
         </div>
         </div>
-        
-                  
     </div>
 )
 }

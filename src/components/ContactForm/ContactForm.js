@@ -29,7 +29,7 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
           <div className='row'>
           <div className='col' style={{textAlign: "center"}}>FORMULARIO DE COMPRA</div>
           </div>
-          <form onSubmit={handleContactForm}>
+          <form style={{marginBottom: "5rem"}} onSubmit={handleContactForm}>
           <div className="row">
             <div className="col">
             <label className='LabelContact'>Nombre:
@@ -70,13 +70,13 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
                 onChange={({ target }) => setComment(target.value)}
               />
             </label>
-            <button className='Button' type='submit'>CARGAR DATOS</button>
+            <div className='col'>
+              <button className='btn btn-success' style={{marginTop: "1rem"}} type='submit'>CARGAR DATOS</button>
+            </div>
+            
             </div>
           </div>
-          </form>
-
-
-          
+         </form>
         </div>
       )
 }
